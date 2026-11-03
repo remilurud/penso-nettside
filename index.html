@@ -32,11 +32,26 @@ main { flex: 1; display: flex; padding: 0 16px 16px; }
 .band { flex: 1; display: flex; align-items: center; background: var(--hero); border-radius: 24px; }
 .hero { text-align: center; padding-block: 72px 112px; }
 h1 { font-size: clamp(38px, 6vw, 64px); line-height: 1.08; letter-spacing: -.02em; font-weight: 750; margin: 0 auto 36px; max-width: 12em; text-wrap: balance; }
-.btn { display: inline-block; background: var(--accent); color: #fff; text-decoration: none; font-weight: 600; font-size: 17px;
+.btn { display: inline-block; border: 0; cursor: pointer; font-family: inherit; background: var(--accent); color: #fff; text-decoration: none; font-weight: 600; font-size: 17px;
   border-radius: 999px; padding: 15px 32px; transition: background-color .18s; }
 .btn:hover { background: var(--accent-hover); }
 .btn:active { transform: translateY(1px); }
 .status { margin: 18px 0 0; font-size: 15px; color: var(--ink-2); }
+
+dialog { border: 0; border-radius: 20px; padding: 32px; width: min(480px, calc(100vw - 32px)); color: var(--ink); box-shadow: 0 24px 64px rgba(14, 40, 32, .18); }
+dialog::backdrop { background: rgba(22, 24, 27, .4); }
+dialog h2 { margin: 0 0 20px; font-size: 26px; letter-spacing: -.02em; }
+.close { position: absolute; top: 14px; right: 14px; width: 40px; height: 40px; border: 0; border-radius: 50%; background: none; font-size: 26px; line-height: 1; color: var(--ink-2); cursor: pointer; }
+.close:hover { background: var(--hero); }
+label { display: block; font-size: 15px; font-weight: 600; margin: 0 0 6px; }
+input, textarea { width: 100%; font: inherit; color: inherit; border: 1px solid #cfd3d1; border-radius: 10px; padding: 11px 13px; margin: 0 0 16px; background: #fff; }
+input:focus, textarea:focus { outline: 2px solid var(--focus); outline-offset: 0; border-color: transparent; }
+textarea { min-height: 128px; resize: vertical; }
+.hp { position: absolute; left: -9999px; }
+form .btn { border: 0; cursor: pointer; width: 100%; }
+form .btn:disabled { opacity: .6; cursor: default; }
+.msg { margin: 14px 0 0; font-size: 15px; min-height: 1.6em; }
+.msg.err { color: #a3261b; }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 @media (max-width: 560px) { .wrap { padding-inline: 16px; } main { padding: 0 8px 8px; } .band { border-radius: 18px; } .hero { padding-block: 48px 80px; } }
@@ -52,10 +67,49 @@ h1 { font-size: clamp(38px, 6vw, 64px); line-height: 1.08; letter-spacing: -.02e
 <main>
   <div class="band"><div class="wrap hero">
     <h1>Enkelt regnskap for flere selskaper</h1>
-    <a class="btn" href="mailto:hei@penso.no">Ta kontakt</a>
+    <button class="btn" type="button" id="open" aria-haspopup="dialog">Ta kontakt</button>
     <p class="status">Under utvikling</p>
   </div></div>
 </main>
+
+<dialog id="kontakt" aria-labelledby="k-h">
+  <button class="close" type="button" id="close" aria-label="Lukk">×</button>
+  <form id="skjema" novalidate>
+    <h2 id="k-h">Ta kontakt</h2>
+    <label for="f-navn">Navn</label>
+    <input id="f-navn" name="name" autocomplete="name" maxlength="100">
+    <label for="f-epost">E-post</label>
+    <input id="f-epost" name="email" type="email" autocomplete="email" required maxlength="200">
+    <label for="f-melding">Melding</label>
+    <textarea id="f-melding" name="message" required maxlength="4000"></textarea>
+    <div class="hp" aria-hidden="true"><label for="f-web">Nettside</label><input id="f-web" name="website" tabindex="-1" autocomplete="off"></div>
+    <button class="btn" type="submit">Send</button>
+    <p class="msg" id="msg" role="status" aria-live="polite"></p>
+  </form>
+</dialog>
+<script>
+(() => {
+  const ENDPOINT = "https://penso-skjema.hello-ac5.workers.dev";
+  const d = document.getElementById("kontakt"), f = document.getElementById("skjema"), m = document.getElementById("msg");
+  document.getElementById("open").addEventListener("click", () => { d.showModal(); f.elements.email.focus(); });
+  document.getElementById("close").addEventListener("click", () => d.close());
+  d.addEventListener("click", e => { if (e.target === d) d.close(); });
+  f.addEventListener("submit", async e => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(f));
+    m.className = "msg";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim())) { m.className = "msg err"; m.textContent = "Skriv inn en gyldig e-postadresse."; f.elements.email.focus(); return; }
+    if (data.message.trim().length < 2) { m.className = "msg err"; m.textContent = "Skriv en melding."; f.elements.message.focus(); return; }
+    const b = f.querySelector("[type=submit]"); b.disabled = true; m.textContent = "Sender …";
+    try {
+      const r = await fetch(ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
+      if (!r.ok) throw new Error(r.status);
+      f.reset(); m.textContent = "Takk. Vi svarer så snart vi kan.";
+    } catch { m.className = "msg err"; m.textContent = "Meldingen ble ikke sendt. Prøv igjen om litt."; }
+    b.disabled = false;
+  });
+})();
+</script>
 
 </body>
 </html>
