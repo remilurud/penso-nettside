@@ -31,12 +31,13 @@ header .wrap { display: flex; align-items: center; justify-content: space-betwee
 main { flex: 1; display: flex; padding: 0 16px 16px; }
 .band { flex: 1; display: flex; align-items: center; background: var(--hero); border-radius: 24px; }
 .hero { text-align: center; padding-block: 72px 112px; }
-h1 { font-size: clamp(38px, 6vw, 64px); line-height: 1.08; letter-spacing: -.02em; font-weight: 750; margin: 0 auto 36px; max-width: 12em; text-wrap: balance; }
+h1 { font-size: clamp(38px, 6vw, 64px); line-height: 1.08; letter-spacing: -.02em; font-weight: 750; margin: 0 auto 18px; max-width: 12em; text-wrap: balance; }
 .btn { display: inline-block; border: 0; cursor: pointer; font-family: inherit; background: var(--accent); color: #fff; text-decoration: none; font-weight: 600; font-size: 17px;
   border-radius: 999px; padding: 15px 32px; transition: background-color .18s; }
 .btn:hover { background: var(--accent-hover); }
 .btn:active { transform: translateY(1px); }
-.status { margin: 18px 0 0; font-size: 15px; color: var(--ink-2); }
+.btn-sm { font-size: 15px; padding: 10px 20px; }
+.status { margin: 0; font-size: 15px; color: var(--ink-2); }
 
 .points { list-style: none; margin: 56px auto 0; padding: 0; max-width: 760px; display: grid; grid-template-columns: 1fr 1fr; gap: 22px 40px; text-align: left; }
 .points li { position: relative; padding-left: 38px; color: var(--ink-2); font-size: 16px; line-height: 1.5; }
@@ -66,13 +67,13 @@ form .btn:disabled { opacity: .6; cursor: default; }
 <header>
   <div class="wrap">
     <a class="brand" href="/" aria-label="Penso, til forsiden"><img src="/favicon.svg" alt="" width="30" height="30">Penso</a>
+    <button class="btn btn-sm" type="button" id="open" aria-haspopup="dialog">Ta kontakt</button>
   </div>
 </header>
 
 <main>
   <div class="band"><div class="wrap hero">
     <h1>Enkelt regnskap for flere selskaper</h1>
-    <button class="btn" type="button" id="open" aria-haspopup="dialog">Ta kontakt</button>
     <p class="status">Under utvikling</p>
     <ul class="points">
       <li><strong>Alle selskapene dine på ett sted</strong>Fra holding til datterselskap.</li>
