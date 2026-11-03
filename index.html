@@ -38,6 +38,11 @@ h1 { font-size: clamp(38px, 6vw, 64px); line-height: 1.08; letter-spacing: -.02e
 .btn:active { transform: translateY(1px); }
 .status { margin: 18px 0 0; font-size: 15px; color: var(--ink-2); }
 
+.points { list-style: none; margin: 56px auto 0; padding: 0; max-width: 760px; display: grid; grid-template-columns: 1fr 1fr; gap: 22px 40px; text-align: left; }
+.points li { position: relative; padding-left: 38px; color: var(--ink-2); font-size: 16px; line-height: 1.5; }
+.points strong { display: block; color: var(--ink); font-size: 17px; }
+.points li::before { content: ""; position: absolute; left: 0; top: 1px; width: 24px; height: 24px; border-radius: 50%; background: var(--accent)
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 12.5l3.2 3.2L17 9' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 24px no-repeat; }
 dialog { border: 0; border-radius: 20px; padding: 32px; width: min(480px, calc(100vw - 32px)); color: var(--ink); box-shadow: 0 24px 64px rgba(14, 40, 32, .18); }
 dialog::backdrop { background: rgba(22, 24, 27, .4); }
 dialog h2 { margin: 0 0 20px; font-size: 26px; letter-spacing: -.02em; }
@@ -54,7 +59,7 @@ form .btn:disabled { opacity: .6; cursor: default; }
 .msg.err { color: #a3261b; }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
-@media (max-width: 560px) { .wrap { padding-inline: 16px; } main { padding: 0 8px 8px; } .band { border-radius: 18px; } .hero { padding-block: 48px 80px; } }
+@media (max-width: 560px) { .wrap { padding-inline: 16px; } main { padding: 0 8px 8px; } .band { border-radius: 18px; } .hero { padding-block: 48px 64px; } .points { grid-template-columns: 1fr; margin-top: 44px; max-width: 360px; } }
 </style>
 </head>
 <body>
@@ -69,6 +74,12 @@ form .btn:disabled { opacity: .6; cursor: default; }
     <h1>Enkelt regnskap for flere selskaper</h1>
     <button class="btn" type="button" id="open" aria-haspopup="dialog">Ta kontakt</button>
     <p class="status">Under utvikling</p>
+    <ul class="points">
+      <li><strong>Alle selskapene dine på ett sted</strong>Fra holding til datterselskap.</li>
+      <li><strong>Bilag føres automatisk</strong>Penso foreslår konto og MVA. Du godkjenner.</li>
+      <li><strong>Mellomværender som alltid stemmer</strong>Selskapene avstemmes mot hverandre.</li>
+      <li><strong>Ingenting forsvinner</strong>Bokførte bilag rettes bare med synlige korrigeringer.</li>
+    </ul>
   </div></div>
 </main>
 
