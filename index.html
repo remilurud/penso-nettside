@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Penso – regnskap for deg som eier flere selskaper</title>
-<meta name="description" content="Penso samler holdingselskapet og datterselskapene i én oversikt: bilag, bank, mellomværender og MVA, med dobbelt bokholderi i bunnen. Under utvikling.">
+<title>Penso – enkelt regnskap for deg med flere selskaper</title>
+<meta name="description" content="Enkelt regnskap for holding og datterselskaper i én oversikt. Under utvikling.">
 <meta property="og:title" content="Penso – regnskap for deg som eier flere selskaper">
 <meta property="og:description" content="Holding og datterselskaper i én oversikt. Under utvikling.">
 <meta property="og:type" content="website">
@@ -37,7 +37,6 @@
   }
 }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
 html, body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.6 var(--font); -webkit-font-smoothing: antialiased; }
 a { color: var(--accent); text-underline-offset: 3px; text-decoration-thickness: 1px; }
 :focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 4px; }
@@ -52,62 +51,34 @@ header { border-bottom: 1px solid var(--line); }
 .bar { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 16px; }
 .brand { display: flex; align-items: center; gap: 10px; font-size: 24px; letter-spacing: -.02em; color: var(--ink); text-decoration: none; }
 .brand img { width: 28px; height: 28px; }
-nav ul { display: flex; gap: 26px; list-style: none; margin: 0; padding: 0; }
-nav a { color: var(--ink-2); text-decoration: none; font-size: 15px; }
-nav a:hover { color: var(--ink); }
+.bar > a:last-child { color: var(--ink-2); text-decoration: none; font-size: 15px; }
+.bar > a:last-child:hover { color: var(--ink); }
 
 /* Hovedbudskap */
-.hero { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 56px; align-items: center; padding-block: 88px 96px; }
-.latin { font-size: 14px; color: var(--ink-3); margin: 0 0 18px; letter-spacing: .01em; }
-.latin i { font-family: var(--font-display); font-size: 16px; color: var(--ink-2); }
-h1 { font-size: clamp(38px, 5.4vw, 62px); line-height: 1.04; letter-spacing: -.025em; margin: 0 0 22px; }
-.lead { font-size: 19px; color: var(--ink-2); max-width: 34em; margin: 0 0 28px; }
-.status { display: inline-flex; align-items: center; gap: 8px; background: var(--warn-bg); color: var(--warn); font-size: 14px; font-weight: 600; border-radius: 6px; padding: 6px 12px; }
-.status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
-.cta { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; margin-top: 30px; }
-.btn { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: var(--accent-ink); text-decoration: none; font-weight: 600; font-size: 15px;
-  border-radius: 8px; padding: 11px 18px; transition: background-color .18s var(--ease), transform .12s var(--ease); }
+.hero { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 64px; align-items: center; padding-block: 104px 112px; }
+h1 { font-size: clamp(40px, 6vw, 68px); line-height: 1.03; letter-spacing: -.028em; margin: 0 0 20px; }
+.lead { font-size: 20px; color: var(--ink-2); max-width: 26em; margin: 0 0 32px; }
+.cta { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; background: var(--accent); color: var(--accent-ink); text-decoration: none; font-weight: 600; font-size: 16px;
+  border-radius: 8px; padding: 13px 22px; transition: background-color .18s var(--ease), transform .12s var(--ease); }
 .btn:hover { background: var(--accent-hover); }
 .btn:active { transform: translateY(1px); }
+.status { font-size: 14px; color: var(--ink-3); }
 
-/* Avstemmingsarket: signaturen med dobbel sumstrek */
+/* Arket med dobbel sumstrek */
 .sheet { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 26px 26px 22px; }
-.sheet h2 { font-size: 18px; margin: 0 0 4px; }
-.sheet .sub { font-size: 13.5px; color: var(--ink-3); margin: 0 0 18px; }
 .sheet table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
-.sheet td { padding: 11px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+.sheet td { padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
 .sheet td + td { text-align: right; white-space: nowrap; }
 .sheet .co { display: block; font-size: 12.5px; color: var(--ink-3); }
 .sheet tfoot td { border-bottom: 0; border-top: 3px double var(--ink); font-weight: 650; padding-top: 12px; }
 .ok { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 600; color: var(--accent); background: var(--accent-soft); border-radius: 5px; padding: 2px 8px; margin-top: 16px; }
 .ok::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
-.note { font-size: 12.5px; color: var(--ink-3); margin: 12px 0 0; }
 
-/* Seksjoner */
-section.block { padding: 84px 0; border-top: 1px solid var(--line); }
-.head { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 56px; margin-bottom: 44px; align-items: end; }
-.head h2 { font-size: clamp(28px, 3.4vw, 38px); line-height: 1.12; letter-spacing: -.015em; margin: 0; }
-.head p { color: var(--ink-2); margin: 0; max-width: 36em; }
-.principles { display: grid; grid-template-columns: 1fr 1fr; gap: 0 56px; }
-.principles article { padding: 24px 0 26px; border-top: 1px solid var(--line-2); }
-.principles h3 { font-size: 20px; margin: 0 0 8px; letter-spacing: -.005em; }
-.principles p { margin: 0; color: var(--ink-2); }
-.principles .n { font-family: var(--font-display); color: var(--accent); font-size: 15px; display: block; margin-bottom: 10px; font-variant-numeric: lining-nums; }
-
-.lists { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.list { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 24px 26px; }
-.list h3 { font-size: 19px; margin: 0 0 14px; }
-.list ul { list-style: none; margin: 0; padding: 0; }
-.list li { padding: 10px 0 10px 26px; border-top: 1px solid var(--line); position: relative; color: var(--ink-2); }
-.list li:first-child { border-top: 0; }
-.list li::before { position: absolute; left: 0; top: 10px; font-weight: 700; }
-.list.done li::before { content: "✓"; color: var(--accent); }
-.list.todo li::before { content: "–"; color: var(--ink-3); }
-.asof { font-size: 13.5px; color: var(--ink-3); margin: 18px 0 0; }
-
-.contact { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: center; }
-.contact h2 { font-size: clamp(26px, 3vw, 34px); margin: 0 0 8px; letter-spacing: -.015em; }
-.contact p { color: var(--ink-2); margin: 0; max-width: 40em; }
+/* Tre verdier */
+.values { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 48px; background: linear-gradient(var(--line), var(--line)) no-repeat 50% 0 / calc(100% - 48px) 1px; padding-block: 64px 88px; }
+.values h2 { font-size: 22px; margin: 0 0 6px; letter-spacing: -.01em; }
+.values p { margin: 0; color: var(--ink-2); }
 
 footer { border-top: 1px solid var(--line); padding: 28px 0 40px; font-size: 14px; color: var(--ink-3); }
 footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
@@ -116,21 +87,17 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 .hero > * { animation: rise .5s var(--ease) both; }
 .hero > *:nth-child(2) { animation-delay: .08s; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .hero > * { animation: none; } * { transition: none !important; } }
+@media (prefers-reduced-motion: reduce) { .hero > * { animation: none; } * { transition: none !important; } }
 
 @media (max-width: 880px) {
-  .hero, .head, .contact { grid-template-columns: 1fr; gap: 32px; }
-  .hero { padding-block: 56px 64px; }
-  .principles, .lists { grid-template-columns: 1fr; }
-  section.block { padding: 60px 0; }
-  .head { margin-bottom: 28px; }
+  .hero { grid-template-columns: 1fr; gap: 40px; padding-block: 56px 64px; }
+  .values { grid-template-columns: 1fr; gap: 28px; padding-block: 48px 64px; }
 }
 @media (max-width: 560px) {
   .wrap { padding-inline: 16px; }
-  nav ul { gap: 16px; }
-  nav li:not(:last-child) { display: none; }
-  .lead { font-size: 17px; }
+  .lead { font-size: 18px; }
   .sheet { padding: 20px 18px 18px; }
+  .values { background-size: calc(100% - 32px) 1px; }
 }
 </style>
 </head>
@@ -139,97 +106,42 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 <header>
   <div class="wrap bar">
     <a class="brand" href="/" aria-label="Penso, til forsiden"><img src="/favicon.svg" alt="" width="28" height="28">Penso</a>
-    <nav aria-label="Hovedmeny"><ul>
-      <li><a href="#prinsipper">Prinsipper</a></li>
-      <li><a href="#status">Status</a></li>
-      <li><a href="#kontakt">Kontakt</a></li>
-    </ul></nav>
+    <a href="mailto:hei@penso.no">Kontakt</a>
   </div>
 </header>
 
 <main id="innhold">
   <div class="wrap hero">
     <div>
-      <p class="latin"><i>pēnsō</i> (latin): å veie, å oppveie</p>
-      <h1>Regnskap for deg som eier flere selskaper.</h1>
-      <p class="lead">Penso samler holdingselskapet og datterselskapene i én oversikt: bilag, bank, mellomværender og MVA. Dobbelt bokholderi i bunnen, og et revisjonsspor som ikke kan endres.</p>
-      <span class="status">Under utvikling. Brukes ikke til å føre regnskap ennå.</span>
+      <h1>Enkelt regnskap for deg med flere selskaper.</h1>
+      <p class="lead">Holding og datterselskaper i én oversikt.</p>
       <div class="cta">
-        <a class="btn" href="mailto:hei@penso.no">Skriv til hei@penso.no</a>
-        <a href="#status">Se hva som er bygget</a>
+        <a class="btn" href="mailto:hei@penso.no">Skriv til oss</a>
+        <span class="status">Under utvikling</span>
       </div>
     </div>
-    <aside class="sheet" aria-labelledby="ark-h">
-      <h2 id="ark-h">Mellomværende mellom to selskaper</h2>
-      <p class="sub">Samme lån, sett fra begge sider</p>
+    <aside class="sheet" aria-label="Eksempel: mellomværende mellom to selskaper">
       <table>
         <tbody>
-          <tr><td>Fordring på datterselskap<span class="co">Holding AS · konto 1360</span></td><td>250 000,00</td></tr>
-          <tr><td>Gjeld til morselskap<span class="co">Eiendom AS · konto 2260</span></td><td>−250 000,00</td></tr>
+          <tr><td>Fordring på datterselskap<span class="co">Holding AS · 1360</span></td><td>250 000,00</td></tr>
+          <tr><td>Gjeld til morselskap<span class="co">Eiendom AS · 2260</span></td><td>−250 000,00</td></tr>
         </tbody>
         <tfoot><tr><td>Differanse</td><td>0,00</td></tr></tfoot>
       </table>
       <span class="ok">Avstemt i begge selskaper</span>
-      <p class="note">Eksempel med oppdiktede selskaper og tall.</p>
     </aside>
   </div>
 
-  <section class="block" id="prinsipper" aria-labelledby="pr-h">
-    <div class="wrap">
-      <div class="head">
-        <h2 id="pr-h">Slik tenker Penso</h2>
-        <p>Debet og kredit skal veie like mye. Det samme gjelder forholdet mellom selskapene dine. Penso er bygget for at du skal se det, ikke gjette det.</p>
-      </div>
-      <div class="principles">
-        <article><span class="n">01</span><h3>Konsernet først</h3><p>Mellomværender mellom selskapene avstemmes mot hverandre. En differanse vises med årsak og utjevnes aldri automatisk.</p></article>
-        <article><span class="n">02</span><h3>Konsekvensen før handlingen</h3><p>Før du godkjenner et bilag, ser du hvordan det bokføres i hvert selskap det berører, i vanlig språk.</p></article>
-        <article><span class="n">03</span><h3>Ingen stille gjetting</h3><p>Forslag til konto og MVA vises med grunnlag og sikkerhet. Usikre bilag går til et menneske.</p></article>
-        <article><span class="n">04</span><h3>Det bokførte står</h3><p>Bokførte bilag kan bare rettes ved tilbakeføring. Låste perioder er låst, og revisjonssporet er kjedet med kontrollsummer.</p></article>
-      </div>
-    </div>
-  </section>
-
-  <section class="block" id="status" aria-labelledby="st-h">
-    <div class="wrap">
-      <div class="head">
-        <h2 id="st-h">Hva som finnes, og hva som ikke gjør det</h2>
-        <p>Penso utvikles først for eierens egne selskaper. Listen viser hva som er bygget og testet med oppdiktede data, og hva som gjenstår.</p>
-      </div>
-      <div class="lists">
-        <div class="list done"><h3>Bygget og testet</h3><ul>
-          <li>Hovedbok med periodelås, tilbakeføring og revisjonsspor</li>
-          <li>Bilagsinnboks med tolking, forslag og dublettkontroll</li>
-          <li>Kjøp betalt av et annet konsernselskap, bokført i begge</li>
-          <li>Bankimport (camt.053 og CSV) og månedlig avstemming</li>
-          <li>Faktura med KID, kreditnota og internfaktura</li>
-          <li>MVA-terminer, årsavslutning og SAF-T-eksport kontrollert mot Skatteetatens skjema</li>
-        </ul></div>
-        <div class="list todo"><h3>Ikke bygget ennå</h3><ul>
-          <li>Innsending til Skatteetaten og Altinn</li>
-          <li>Sending og mottak av e-faktura (EHF)</li>
-          <li>Direkte kobling til banken</li>
-          <li>Konsolidert konsernregnskap</li>
-          <li>Lønn</li>
-        </ul></div>
-      </div>
-      <p class="asof">Oppdatert november 2026.</p>
-    </div>
-  </section>
-
-  <section class="block" id="kontakt" aria-labelledby="ko-h">
-    <div class="wrap contact">
-      <div>
-        <h2 id="ko-h">Vil du følge med?</h2>
-        <p>Penso er ikke til salgs, og det finnes ingen innlogging for andre ennå. Har du spørsmål eller innspill, skriv gjerne.</p>
-      </div>
-      <a class="btn" href="mailto:hei@penso.no">hei@penso.no</a>
-    </div>
+  <section class="wrap values" aria-label="Hva Penso gjør">
+    <div><h2>Alle selskapene samlet</h2><p>Se hele gruppen på ett sted.</p></div>
+    <div><h2>Alltid i balanse</h2><p>Mellomværender stemmes av mot hverandre.</p></div>
+    <div><h2>Ingen overraskelser</h2><p>Du ser hva som bokføres før du godkjenner.</p></div>
   </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <span>Penso · penso.no</span>
+    <span>Penso · <i>pēnsō</i>, latin for å veie</span>
     <a href="mailto:hei@penso.no">hei@penso.no</a>
   </div>
 </footer>
