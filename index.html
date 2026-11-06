@@ -44,39 +44,78 @@ h1 em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-
 .lead { font-size: clamp(18px, 2vw, 22px); color: rgba(255,255,255,.88); margin: 0 auto 44px; max-width: 30em; }
 .status { display: block; margin: 18px 0 0; font-size: 14px; color: rgba(255,255,255,.75); }
 
-/* Illustrasjon av appen */
-.app { position: relative; margin: -280px auto 0; max-width: 1140px; border-radius: 18px; overflow: hidden; background: #fff;
-  box-shadow: 0 40px 90px rgba(10, 48, 41, .28), 0 0 0 1px rgba(10, 48, 41, .06); }
-.appbar { display: flex; align-items: center; gap: 14px; background: #1d2321; padding: 12px 20px; color: #e8ecea; font-size: 14px; font-weight: 600; }
-.appbar img { width: 26px; height: 26px; }
-.pick { background: #2c3431; border-radius: 6px; padding: 6px 12px; min-width: 200px; display: flex; justify-content: space-between; }
-.pick::after { content: "▾"; color: #9aa39f; }
-.menu { background: #2c3431; border-radius: 6px; padding: 6px 12px; }
-.icons { margin-left: auto; display: flex; gap: 10px; }
-.icons i { width: 26px; height: 26px; border-radius: 6px; background: #2c3431; }
-.tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; }
-.tile { padding: 28px 32px 30px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); min-width: 0; }
-.tile:nth-child(3n) { border-right: 0; }
-.tile:nth-last-child(-n+3) { border-bottom: 0; }
-.tile h3 { margin: 0 0 16px; font-size: 18px; font-weight: 650; letter-spacing: -.01em; }
-.tile svg { display: block; width: 100%; height: auto; }
-.donut { display: flex; align-items: center; gap: 18px; }
-.donut svg { width: 140px; flex: none; }
-.legend { list-style: none; margin: 0; padding: 0; font-size: 13px; color: var(--ink-2); }
-.legend li { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
-.legend b { width: 10px; height: 10px; border-radius: 2px; flex: none; }
-.sums { display: flex; gap: 28px; margin-top: 14px; }
-.sums div { border-left: 3px solid #2f8a6e; padding-left: 10px; font-size: 12.5px; color: var(--ink-2); line-height: 1.3; }
+/* Illustrasjon av appen (nyeste Penso v2 med månedslinje, 3-kolonners hovedbok, 2-kolonners innboks, bankformel og salgs-skuff) */
+.app { position: relative; margin: -280px auto 0; max-width: 1160px; border-radius: 16px; overflow: hidden; background: #f4f7f5;
+  box-shadow: 0 40px 90px rgba(10, 48, 41, .28), 0 0 0 1px rgba(10, 48, 41, .08); display: grid; grid-template-columns: 200px 1fr; text-align: left; font-size: 13.5px; line-height: 1.45; }
+.app-side { background: #1d2321; color: #cfd6d3; padding: 16px 10px; display: flex; flex-direction: column; gap: 2px; border-right: 1px solid #141917; }
+.app-brand { display: flex; align-items: center; gap: 9px; font-weight: 700; font-size: 17px; color: #fff; padding: 2px 10px 16px; letter-spacing: -.02em; }
+.app-brand img { width: 24px; height: 24px; border-radius: 6px; box-shadow: 0 0 0 1px rgba(255,255,255,.28); }
+.app-grp { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .07em; color: #7d8984; padding: 10px 10px 3px; }
+.app-nav-btn { position: relative; width: 100%; border: 0; background: transparent; color: #b8c2be; font: 500 13px/1.3 var(--font); padding: 7px 10px; border-radius: 6px;
+  display: flex; justify-content: space-between; align-items: center; cursor: pointer; text-align: left; }
+.app-nav-btn:hover { background: #262e2b; color: #fff; }
+.app-nav-btn[aria-selected="true"] { background: #2c3431; color: #fff; font-weight: 600; }
+.app-nav-btn[aria-selected="true"]::before { content: ""; position: absolute; left: -10px; top: 6px; bottom: 6px; width: 3px; border-radius: 0 2px 2px 0; background: #2f8a6e; }
+.app-badge { background: #2f8a6e; color: #fff; font-size: 10.5px; font-weight: 650; border-radius: 99px; padding: 1px 6px; font-variant-numeric: tabular-nums; }
+.app-main { min-width: 0; display: flex; flex-direction: column; background: #f4f7f5; }
+.app-ctx { background: #fff; border-bottom: 1px solid var(--line); padding: 8px 20px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 12.5px; }
+.app-ctx-lbl { color: #6e7874; font-weight: 500; }
+.app-ctx-sel { background: #f4f7f5; border: 1px solid #cbd4d0; border-radius: 6px; padding: 4px 10px; font-weight: 600; color: var(--ink); }
+.app-ctx-spacer { flex: 1; }
+.app-btn { display: inline-flex; align-items: center; gap: 5px; border: 1px solid #cbd4d0; background: #fff; border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 500; color: var(--ink); }
+.app-btn.pri { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+.app-kbd { font-size: 10.5px; color: #6e7874; background: #edf1ef; padding: 1px 4px; border-radius: 3px; border: 1px solid var(--line); }
+.app-body { padding: 18px 20px 22px; }
+.app-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--line); margin-bottom: 12px; flex-wrap: wrap; }
+.app-head h2 { margin: 0; font-size: 19px; font-weight: 650; letter-spacing: -.02em; color: var(--ink); }
+.app-head p { margin: 2px 0 0; font-size: 12.5px; color: var(--ink-2); }
+.month-strip { display: flex; align-items: center; gap: 3px; overflow-x: auto; background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 3px; margin-bottom: 12px; }
+.m-pill { display: inline-flex; align-items: center; gap: 4px; padding: 3px 8px; border-radius: 4px; font-size: 11.5px; font-weight: 500; color: var(--ink-2); white-space: nowrap; border: 1px solid transparent; }
+.m-pill.active { background: #e3f0eb; border-color: var(--accent); color: var(--ink); font-weight: 600; }
+.m-dot { width: 5px; height: 5px; border-radius: 50%; background: #2f8a6e; }
+.tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; background: #fff; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.tile { padding: 16px 18px 18px; border-right: 1px solid var(--line); min-width: 0; display: flex; flex-direction: column; justify-content: space-between; }
+.tile:last-child { border-right: 0; }
+.tile h3 { margin: 0 0 4px; font-size: 13.5px; font-weight: 650; letter-spacing: -.01em; color: var(--ink); }
+.big { font-size: 24px; font-weight: 650; letter-spacing: -.025em; font-variant-numeric: tabular-nums; margin: 2px 0 8px; color: var(--ink); }
+.sums { display: flex; gap: 16px; margin-bottom: 10px; flex-wrap: wrap; }
+.sums div { border-left: 3px solid #2f8a6e; padding-left: 8px; font-size: 11.5px; color: var(--ink-2); line-height: 1.25; }
 .sums div.k { border-color: #e9a646; }
-.sums strong { display: block; font-size: 19px; color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; margin-top: 3px; }
-.rows { list-style: none; margin: 0; padding: 0; font-size: 14.5px; }
-.rows li { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
-.rows li:last-child { border-bottom: 0; }
-.ok { color: #1f7a5c; font-weight: 600; font-size: 13px; }
-.ok::before { content: "● "; }
-.big { font-size: 34px; font-weight: 650; letter-spacing: -.02em; font-variant-numeric: tabular-nums; margin: 4px 0 2px; }
-.muted { font-size: 13px; color: var(--ink-2); margin: 0; }
+.sums strong { display: block; font-size: 14.5px; color: var(--ink); font-weight: 650; font-variant-numeric: tabular-nums; margin-top: 2px; }
+.acct-list { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 7px; }
+.acct-item { display: grid; gap: 3px; font-size: 12px; font-variant-numeric: tabular-nums; }
+.acct-row { display: flex; justify-content: space-between; gap: 6px; }
+.acct-name { font-weight: 500; color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.acct-meta { color: var(--ink-2); white-space: nowrap; }
+.acct-bar { display: block; width: 100%; height: 4px; border-radius: 2px; overflow: hidden; }
+.app-card { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; margin-top: 12px; }
+.app-card h3 { margin: 0 0 8px; font-size: 13.5px; font-weight: 650; }
+.app-tbl { width: 100%; border-collapse: collapse; font-size: 12.5px; font-variant-numeric: tabular-nums; }
+.app-tbl th { text-align: left; font-size: 11px; color: #6e7874; font-weight: 600; padding: 6px 8px; border-bottom: 1px solid #cbd4d0; }
+.app-tbl td { padding: 7px 8px; border-bottom: 1px solid var(--line); }
+.app-tbl tr:last-child td { border-bottom: 0; }
+.app-tbl tfoot td { font-weight: 650; border-top: 3px double var(--ink); padding-top: 7px; }
+.num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.pill { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 600; border-radius: 4px; padding: 1.5px 6px; white-space: nowrap; }
+.pill::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+.pill.ok { background: #eaf5ef; color: #186a49; }
+.pill.warn { background: #fdf3e1; color: #8a5300; }
+.pill.info { background: #ebf1f8; color: #234b82; }
+.split-2 { display: grid; grid-template-columns: .95fr 1.05fr; background: #fff; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.split-left { border-right: 1px solid var(--line); }
+.inb-row { padding: 10px 14px; border-bottom: 1px solid var(--line); display: grid; gap: 3px; }
+.inb-row.sel { background: #f4f7f5; box-shadow: inset 3px 0 0 var(--accent); }
+.rec-eq { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; background: #f4f7f5; border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; margin-bottom: 10px; }
+.rec-box { flex: 1; min-width: 120px; background: #fff; border: 1px solid var(--line); border-radius: 4px; padding: 7px 10px; }
+.rec-box.ok-box { background: #eaf5ef; border-color: #2f8a6e; color: #186a49; }
+.rec-box .lbl { font-size: 11px; color: #6e7874; }
+.rec-box .val { font-size: 15px; font-weight: 650; font-variant-numeric: tabular-nums; margin-top: 2px; }
+.inv-tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 10px; }
+.inv-t { background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; }
+.inv-t.sel { border-color: var(--accent); box-shadow: inset 0 2px 0 var(--accent); }
+.muted { font-size: 12.5px; color: var(--ink-2); margin: 0; }
 .note { text-align: center; font-size: 13px; color: var(--ink-2); margin: 14px 0 0; }
+[hidden] { display: none !important; }
 
 /* Punkter */
 .points { list-style: none; margin: 72px auto 96px; padding: 0 24px; max-width: 860px; display: grid; grid-template-columns: 1fr 1fr; gap: 26px 48px; }
@@ -101,23 +140,27 @@ form .btn:disabled { opacity: .6; cursor: default; }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 @media (max-width: 960px) {
-  .tiles { grid-template-columns: 1fr 1fr; }
-  .tile:nth-child(3n) { border-right: 1px solid var(--line); }
-  .tile:nth-child(2n) { border-right: 0; }
-  .tile:nth-last-child(-n+3) { border-bottom: 1px solid var(--line); }
-  .tile:nth-last-child(-n+2) { border-bottom: 0; }
-  .icons { display: none; }
+  .app { grid-template-columns: 1fr; }
+  .app-side { flex-direction: row; align-items: center; overflow-x: auto; padding: 10px 14px; gap: 6px; border-right: 0; border-bottom: 1px solid #141917; }
+  .app-brand { padding: 0 10px 0 2px; }
+  .app-grp { display: none; }
+  .app-nav-btn { width: auto; white-space: nowrap; padding: 6px 10px; }
+  .app-nav-btn[aria-selected="true"]::before { display: none; }
+  .tiles { grid-template-columns: 1fr; }
+  .tile { border-right: 0; border-bottom: 1px solid var(--line); }
+  .tile:last-child { border-bottom: 0; }
+  .split-2 { grid-template-columns: 1fr; }
+  .split-left { border-right: 0; border-bottom: 1px solid var(--line); }
+  .inv-tabs { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 640px) {
   .wrap { padding-inline: 16px; }
   .top { padding-bottom: 200px; }
   .hero { padding-block: 56px 48px; }
   .app { margin: -200px 12px 0; border-radius: 14px; }
-  .pick { min-width: 0; flex: 1; } .menu { display: none; }
-  .tiles { grid-template-columns: 1fr; }
-  .tile { border-right: 0 !important; border-bottom: 1px solid var(--line) !important; padding: 22px 20px; }
-  .tile:nth-child(n+4) { display: none; }
-  .tile:nth-child(3) { border-bottom: 0 !important; }
+  .app-ctx { padding: 8px 12px; }
+  .app-body { padding: 14px 12px 18px; }
+  .app-card { overflow-x: auto; }
   .points { grid-template-columns: 1fr; margin: 48px auto 64px; padding: 0 20px; max-width: 420px; }
 }
 </style>
@@ -139,31 +182,382 @@ form .btn:disabled { opacity: .6; cursor: default; }
 </div>
 
 <main>
-  <figure class="app" aria-label="Illustrasjon av Penso med oppdiktede tall">
-    <div class="appbar" aria-hidden="true"><img src="/favicon.svg" alt=""><span class="pick">Eksempel Holding AS</span><span class="menu">☰ Meny</span><span class="icons"><i></i><i></i><i></i><i></i></span></div>
-    <div class="tiles">
-      <section class="tile"><h3>Selskapene</h3>
-        <ul class="rows"><li>Eksempel Holding AS <span class="ok">Avstemt</span></li><li>Eksempel Eiendom AS <span class="ok">Avstemt</span></li><li>Eksempel Drift AS <span class="ok">Avstemt</span></li><li>Eksempel Utleie AS <span class="ok">Avstemt</span></li></ul>
-      </section>
-      <section class="tile"><h3>Mellomværende</h3>
-        <div class="donut"><svg viewBox="0 0 140 140" role="img" aria-label="Mellomværende avstemt, differanse null"><circle cx="70" cy="70" r="54" fill="none" stroke="#2f8a6e" stroke-width="16" stroke-dasharray="339.3 339.3" stroke-dashoffset="0.0" transform="rotate(-90 70 70)"/><text x="70" y="62" text-anchor="middle" font-size="10" fill="#5b625f">Differanse</text><text x="70" y="84" text-anchor="middle" font-size="19" font-weight="700" fill="#16181b">0,00</text></svg><ul class="legend"><li><b style="background:#2f8a6e"></b>Fordring 1360</li><li><b style="background:#2f8a6e"></b>Gjeld 2260</li></ul></div>
-      </section>
-      <section class="tile"><h3>Inntekter og kostnader</h3><svg viewBox="0 0 292 150" role="img" aria-label="Søylediagram over inntekter og kostnader per måned"><rect x="6" y="34" width="14" height="62" rx="3" fill="#2f8a6e"/><rect x="6" y="100" width="14" height="31" rx="3" fill="#e9a646"/><rect x="30" y="25" width="14" height="71" rx="3" fill="#2f8a6e"/><rect x="30" y="100" width="14" height="28" rx="3" fill="#e9a646"/><rect x="54" y="38" width="14" height="58" rx="3" fill="#2f8a6e"/><rect x="54" y="100" width="14" height="39" rx="3" fill="#e9a646"/><rect x="78" y="12" width="14" height="84" rx="3" fill="#2f8a6e"/><rect x="78" y="100" width="14" height="34" rx="3" fill="#e9a646"/><rect x="102" y="30" width="14" height="66" rx="3" fill="#2f8a6e"/><rect x="102" y="100" width="14" height="29" rx="3" fill="#e9a646"/><rect x="126" y="47" width="14" height="49" rx="3" fill="#2f8a6e"/><rect x="126" y="100" width="14" height="33" rx="3" fill="#e9a646"/><rect x="150" y="58" width="14" height="38" rx="3" fill="#2f8a6e"/><rect x="150" y="100" width="14" height="21" rx="3" fill="#e9a646"/><rect x="174" y="41" width="14" height="55" rx="3" fill="#2f8a6e"/><rect x="174" y="100" width="14" height="27" rx="3" fill="#e9a646"/><rect x="198" y="23" width="14" height="73" rx="3" fill="#2f8a6e"/><rect x="198" y="100" width="14" height="36" rx="3" fill="#e9a646"/><rect x="222" y="27" width="14" height="69" rx="3" fill="#2f8a6e"/><rect x="222" y="100" width="14" height="38" rx="3" fill="#e9a646"/><rect x="246" y="19" width="14" height="77" rx="3" fill="#2f8a6e"/><rect x="246" y="100" width="14" height="32" rx="3" fill="#e9a646"/><rect x="270" y="8" width="14" height="88" rx="3" fill="#2f8a6e"/><rect x="270" y="100" width="14" height="43" rx="3" fill="#e9a646"/><polyline points="13,34 37,28 61,39 85,20 109,31 133,45 157,53 181,40 205,26 229,29 253,23 277,16" fill="none" stroke="#0e5a4a" stroke-width="2"/><circle cx="13" cy="34" r="3" fill="#fff" stroke="#0e5a4a" stroke-width="2"/><circle cx="37" cy="28" r="3" fill="#fff" stroke="#0e5a4a" stroke-width="2"/><circle cx="61" cy="39" r="3" fill="#fff" stroke="#0e5a4a" stroke-width="2"/><circle cx="85" cy="20" r="3" fill="#fff" stroke="#0e5a4a" stroke-width="2"/><circle cx="109" cy="31" r="3" fill="#fff" stroke="#0e5a4a" stroke-width="2"/><circle cx="133" cy="45" r="3" fill="#fff" stroke="#0e5a4a" stroke-width="2"/><circle cx="157" cy="53" r="3" fill="#fff" stroke="#0e5a4a" stroke-width="2"/><circle cx="181" cy="40" r="3" fill="#fff" stroke="#0e5a4a" stroke-width="2"/><circle cx="205" cy="26" r="3" fill="#fff" stroke="#0e5a4a" stroke-width="2"/><circle cx="229" cy="29" r="3" fill="#fff" stroke="#0e5a4a" stroke-width="2"/><circle cx="253" cy="23" r="3" fill="#fff" stroke="#0e5a4a" stroke-width="2"/><circle cx="277" cy="16" r="3" fill="#fff" stroke="#0e5a4a" stroke-width="2"/></svg>
-        <div class="sums"><div>Sum inntekter<strong>3 418 260</strong></div><div class="k">Sum kostnader<strong>2 286 915</strong></div></div>
-      </section>
-      <section class="tile"><h3>Egenkapital og gjeld</h3>
-        <div class="donut"><svg viewBox="0 0 140 140" role="img" aria-label="Egenkapital og gjeld"><circle cx="70" cy="70" r="54" fill="none" stroke="#0e5a4a" stroke-width="16" stroke-dasharray="210.4 339.3" stroke-dashoffset="0.0" transform="rotate(-90 70 70)"/><circle cx="70" cy="70" r="54" fill="none" stroke="#9fd0bd" stroke-width="16" stroke-dasharray="128.9 339.3" stroke-dashoffset="-210.4" transform="rotate(-90 70 70)"/><text x="70" y="62" text-anchor="middle" font-size="10" fill="#5b625f">Egenkapital</text><text x="70" y="84" text-anchor="middle" font-size="15" font-weight="700" fill="#16181b">4 812 377</text></svg><ul class="legend"><li><b style="background:#0e5a4a"></b>Egenkapital</li><li><b style="background:#9fd0bd"></b>Gjeld</li></ul></div>
-      </section>
-      <section class="tile"><h3>MVA neste termin</h3>
-        <p class="big">47 318,00</p><p class="muted">Å betale · sjekkliste uten avvik</p>
-        <ul class="rows" style="margin-top:14px"><li>Utgående MVA <span>81 942,50</span></li><li>Inngående MVA <span>−34 624,50</span></li></ul>
-      </section>
-      <section class="tile"><h3>Bankinnskudd</h3><svg viewBox="0 0 292 130" role="img" aria-label="Linjediagram over bankinnskudd"><polygon points="8,124 8,88 33,80 58,82 83,71 108,75 133,64 158,55 183,59 208,46 233,35 258,39 283,19 283,124" fill="#e3f0ea"/><polyline points="8,88 33,80 58,82 83,71 108,75 133,64 158,55 183,59 208,46 233,35 258,39 283,19" fill="none" stroke="#0e5a4a" stroke-width="2.5" stroke-linejoin="round"/><circle cx="8" cy="88" r="3.2" fill="#0e5a4a"/><circle cx="33" cy="80" r="3.2" fill="#0e5a4a"/><circle cx="58" cy="82" r="3.2" fill="#0e5a4a"/><circle cx="83" cy="71" r="3.2" fill="#0e5a4a"/><circle cx="108" cy="75" r="3.2" fill="#0e5a4a"/><circle cx="133" cy="64" r="3.2" fill="#0e5a4a"/><circle cx="158" cy="55" r="3.2" fill="#0e5a4a"/><circle cx="183" cy="59" r="3.2" fill="#0e5a4a"/><circle cx="208" cy="46" r="3.2" fill="#0e5a4a"/><circle cx="233" cy="35" r="3.2" fill="#0e5a4a"/><circle cx="258" cy="39" r="3.2" fill="#0e5a4a"/><circle cx="283" cy="19" r="3.2" fill="#0e5a4a"/></svg>
-        <div class="sums"><div>Saldo i dag<strong>1 962 471,00</strong></div></div>
-      </section>
+  <figure class="app" aria-label="Interaktiv illustrasjon av Penso med oppdiktede selskaper og tall">
+    <aside class="app-side" role="tablist" aria-label="Visninger i illustrasjonen">
+      <div class="app-brand"><img src="/favicon.svg" alt="">Penso</div>
+      <div class="app-grp">Arbeidsflate</div>
+      <button type="button" class="app-nav-btn" role="tab" aria-selected="true" data-pane="oversikt"><span>Oversikt</span></button>
+      <button type="button" class="app-nav-btn" role="tab" aria-selected="false" data-pane="innboks"><span>Innboks</span><span class="app-badge">2</span></button>
+      <button type="button" class="app-nav-btn" role="tab" aria-selected="false" data-pane="salg"><span>Salg</span></button>
+      <button type="button" class="app-nav-btn" role="tab" aria-selected="false" data-pane="bank"><span>Bank</span><span class="app-badge" style="background:#3a4440">0</span></button>
+      <div class="app-grp">Regnskap</div>
+      <span class="app-nav-btn" style="cursor:default;opacity:.75"><span>Bilag og hovedbok</span></span>
+      <span class="app-nav-btn" style="cursor:default;opacity:.75"><span>Konsern og mellomværende</span></span>
+      <span class="app-nav-btn" style="cursor:default;opacity:.75"><span>MVA og avslutning</span></span>
+      <span class="app-nav-btn" style="cursor:default;opacity:.75"><span>Rapporter</span></span>
+    </aside>
+
+    <div class="app-main">
+      <div class="app-ctx">
+        <span class="app-ctx-lbl">Selskap</span>
+        <span class="app-ctx-sel">Alle selskaper (4) ▾</span>
+        <span class="app-ctx-lbl">Regnskapsår</span>
+        <span class="app-ctx-sel">2026 ▾</span>
+        <span class="app-ctx-spacer"></span>
+        <span class="app-btn pri">+ Opprett ▾</span>
+        <span class="app-btn">Søk eller hopp <kbd class="app-kbd">⌘K</kbd></span>
+      </div>
+
+      <!-- FANE 1: OVERSIKT -->
+      <div class="app-body" data-view="oversikt">
+        <div class="app-head">
+          <div>
+            <h2>Oversikt</h2>
+            <p><strong style="color:var(--ink)">4 selskaper</strong> · Bankinnskudd <strong style="color:var(--ink)">1 962 471,00 kr</strong> · <span style="color:#186a49;font-weight:600">Mellomværende i balanse (0,00 kr)</span> · 2 bilag i innboks</p>
+          </div>
+          <div style="display:flex;gap:6px">
+            <span class="app-btn">Kjøp / innboks (2)</span>
+            <span class="app-btn pri">+ Ny salgsfaktura</span>
+          </div>
+        </div>
+
+        <div class="month-strip" aria-label="Regnskapsperiode 2026">
+          <span class="m-pill active">Hele 2026</span>
+          <span class="m-pill"><i class="m-dot"></i>jan</span>
+          <span class="m-pill"><i class="m-dot"></i>feb</span>
+          <span class="m-pill"><i class="m-dot"></i>mar</span>
+          <span class="m-pill"><i class="m-dot"></i>apr</span>
+          <span class="m-pill"><i class="m-dot"></i>mai</span>
+          <span class="m-pill"><i class="m-dot"></i>jun</span>
+          <span class="m-pill"><i class="m-dot"></i>jul</span>
+          <span class="m-pill"><i class="m-dot"></i>aug</span>
+          <span class="m-pill"><i class="m-dot"></i>sep</span>
+          <span class="m-pill"><i class="m-dot"></i>okt</span>
+          <span class="m-pill">nov</span>
+          <span class="m-pill">des</span>
+        </div>
+
+        <div class="tiles">
+          <section class="tile">
+            <div>
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <h3>Likviditet og bank</h3>
+                <span class="pill ok">Avstemt</span>
+              </div>
+              <p class="big">1 962 471,00 kr</p>
+              <p class="muted" style="margin-bottom:8px">Konto 1920 + 1950 · 4 bankkontoer</p>
+              <svg viewBox="0 0 292 92" role="img" aria-label="Utvikling i bankinnskudd gjennom året" style="width:100%;height:auto">
+                <polygon points="8,86 8,66 33,60 58,62 83,52 108,55 133,46 158,38 183,41 208,31 233,23 258,26 283,12 283,86" fill="#e3f0ea"/>
+                <polyline points="8,66 33,60 58,62 83,52 108,55 133,46 158,38 183,41 208,31 233,23 258,26 283,12" fill="none" stroke="#0e5a4a" stroke-width="2.2" stroke-linejoin="round"/>
+                <circle cx="283" cy="12" r="3.2" fill="#0e5a4a"/>
+              </svg>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;border-top:1px solid var(--line);padding-top:8px;margin-top:8px">
+              <span class="muted">Skattetrekkskonto (1950)</span>
+              <strong style="font-variant-numeric:tabular-nums">148 500,00 kr</strong>
+            </div>
+          </section>
+
+          <section class="tile">
+            <div>
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <h3>Kostnader per konto</h3>
+                <span class="muted">Hele 2026</span>
+              </div>
+              <p class="big">2 286 915,00 kr</p>
+              <ul class="acct-list">
+                <li class="acct-item">
+                  <div class="acct-row"><span class="acct-name">6300 Leie lokaler og driftsbygg</span><span class="acct-meta">39 % · 892 000,00 kr</span></div>
+                  <svg class="acct-bar" viewBox="0 0 100 4" preserveAspectRatio="none"><rect width="100" height="4" fill="#edf1ef"/><rect width="39" height="4" fill="#0e5a4a"/></svg>
+                </li>
+                <li class="acct-item">
+                  <div class="acct-row"><span class="acct-name">5000 Lønn til ansatte</span><span class="acct-meta">31 % · 710 400,00 kr</span></div>
+                  <svg class="acct-bar" viewBox="0 0 100 4" preserveAspectRatio="none"><rect width="100" height="4" fill="#edf1ef"/><rect width="31" height="4" fill="#0e5a4a"/></svg>
+                </li>
+                <li class="acct-item">
+                  <div class="acct-row"><span class="acct-name">6600 Reparasjon og vedlikehold</span><span class="acct-meta">18 % · 412 115,00 kr</span></div>
+                  <svg class="acct-bar" viewBox="0 0 100 4" preserveAspectRatio="none"><rect width="100" height="4" fill="#edf1ef"/><rect width="18" height="4" fill="#0e5a4a"/></svg>
+                </li>
+                <li class="acct-item">
+                  <div class="acct-row"><span class="acct-name">6700 Regnskap, revisjon og rådgivning</span><span class="acct-meta">12 % · 272 400,00 kr</span></div>
+                  <svg class="acct-bar" viewBox="0 0 100 4" preserveAspectRatio="none"><rect width="100" height="4" fill="#edf1ef"/><rect width="12" height="4" fill="#0e5a4a"/></svg>
+                </li>
+              </ul>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;border-top:1px solid var(--line);padding-top:8px;margin-top:8px">
+              <span class="muted">Leverandørgjeld (2400)</span>
+              <strong style="font-variant-numeric:tabular-nums">64 250,00 kr</strong>
+            </div>
+          </section>
+
+          <section class="tile">
+            <div>
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <h3>Inntekter og resultat</h3>
+                <span class="pill ok">+1 131 345,00 kr</span>
+              </div>
+              <div class="sums" style="margin-top:6px">
+                <div>Driftsinntekter<strong>3 418 260,00 kr</strong></div>
+                <div class="k">Driftskostnader<strong>2 286 915,00 kr</strong></div>
+              </div>
+              <svg viewBox="0 0 292 78" role="img" aria-label="Inntekter og kostnader per måned" style="width:100%;height:auto">
+                <rect x="6" y="18" width="12" height="36" rx="2" fill="#2f8a6e"/><rect x="6" y="56" width="12" height="18" rx="2" fill="#e9a646"/>
+                <rect x="30" y="14" width="12" height="40" rx="2" fill="#2f8a6e"/><rect x="30" y="56" width="12" height="16" rx="2" fill="#e9a646"/>
+                <rect x="54" y="20" width="12" height="34" rx="2" fill="#2f8a6e"/><rect x="54" y="56" width="12" height="20" rx="2" fill="#e9a646"/>
+                <rect x="78" y="8" width="12" height="46" rx="2" fill="#2f8a6e"/><rect x="78" y="56" width="12" height="18" rx="2" fill="#e9a646"/>
+                <rect x="102" y="16" width="12" height="38" rx="2" fill="#2f8a6e"/><rect x="102" y="56" width="12" height="16" rx="2" fill="#e9a646"/>
+                <rect x="126" y="24" width="12" height="30" rx="2" fill="#2f8a6e"/><rect x="126" y="56" width="12" height="18" rx="2" fill="#e9a646"/>
+                <rect x="150" y="28" width="12" height="26" rx="2" fill="#2f8a6e"/><rect x="150" y="56" width="12" height="13" rx="2" fill="#e9a646"/>
+                <rect x="174" y="21" width="12" height="33" rx="2" fill="#2f8a6e"/><rect x="174" y="56" width="12" height="16" rx="2" fill="#e9a646"/>
+                <rect x="198" y="12" width="12" height="42" rx="2" fill="#2f8a6e"/><rect x="198" y="56" width="12" height="19" rx="2" fill="#e9a646"/>
+                <rect x="222" y="14" width="12" height="40" rx="2" fill="#2f8a6e"/><rect x="222" y="56" width="12" height="20" rx="2" fill="#e9a646"/>
+                <rect x="246" y="10" width="12" height="44" rx="2" fill="#2f8a6e"/><rect x="246" y="56" width="12" height="17" rx="2" fill="#e9a646"/>
+                <rect x="270" y="6" width="12" height="48" rx="2" fill="#2f8a6e"/><rect x="270" y="56" width="12" height="21" rx="2" fill="#e9a646"/>
+              </svg>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;border-top:1px solid var(--line);padding-top:8px;margin-top:8px">
+              <span class="muted">MVA neste termin</span>
+              <strong style="font-variant-numeric:tabular-nums">47 318,00 kr</strong>
+            </div>
+          </section>
+        </div>
+
+        <section class="app-card" aria-label="Nøkkeltall per selskap">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+            <h3 style="margin:0">Nøkkeltall per selskap</h3>
+            <span class="muted">Klikk på fanene til venstre for å se Innboks, Salg og Bank</span>
+          </div>
+          <table class="app-tbl">
+            <thead>
+              <tr>
+                <th>Selskap</th>
+                <th class="num">Bank (1920)</th>
+                <th class="num">Inntekter</th>
+                <th class="num">Kostnader</th>
+                <th class="num">Resultat</th>
+                <th>Mellomværende</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Eksempel Holding AS</strong> <span class="muted">· 999 100 001</span></td>
+                <td class="num">842 100,00 kr</td>
+                <td class="num">420 000,00 kr</td>
+                <td class="num">94 200,00 kr</td>
+                <td class="num"><strong>325 800,00 kr</strong></td>
+                <td><span class="pill ok">Fordring 1360 = Gjeld 2260</span></td>
+                <td><span class="pill ok">Avstemt</span></td>
+              </tr>
+              <tr>
+                <td><strong>Eksempel Eiendom AS</strong> <span class="muted">· 999 100 002</span></td>
+                <td class="num">614 820,00 kr</td>
+                <td class="num">1 680 000,00 kr</td>
+                <td class="num">1 118 400,00 kr</td>
+                <td class="num"><strong>561 600,00 kr</strong></td>
+                <td><span class="pill ok">Avstemt 0,00 kr</span></td>
+                <td><span class="pill ok">Avstemt</span></td>
+              </tr>
+              <tr>
+                <td><strong>Eksempel Drift AS</strong> <span class="muted">· 999 100 003</span></td>
+                <td class="num">318 451,00 kr</td>
+                <td class="num">948 260,00 kr</td>
+                <td class="num">812 315,00 kr</td>
+                <td class="num"><strong>135 945,00 kr</strong></td>
+                <td><span class="pill ok">Avstemt 0,00 kr</span></td>
+                <td><span class="pill info">2 bilag i innboks</span></td>
+              </tr>
+              <tr>
+                <td><strong>Eksempel Utleie AS</strong> <span class="muted">· 999 100 004</span></td>
+                <td class="num">187 100,00 kr</td>
+                <td class="num">370 000,00 kr</td>
+                <td class="num">262 000,00 kr</td>
+                <td class="num"><strong>108 000,00 kr</strong></td>
+                <td><span class="pill ok">Avstemt 0,00 kr</span></td>
+                <td><span class="pill ok">Avstemt</span></td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Sum konsern (4 selskaper)</td>
+                <td class="num">1 962 471,00 kr</td>
+                <td class="num">3 418 260,00 kr</td>
+                <td class="num">2 286 915,00 kr</td>
+                <td class="num">1 131 345,00 kr</td>
+                <td colspan="2"><span class="pill ok">Differanse mellomværende 0,00 kr</span></td>
+              </tr>
+            </tfoot>
+          </table>
+        </section>
+      </div>
+
+      <!-- FANE 2: INNBOKS (2-kolonners bilagsmottak med forhåndsvisning) -->
+      <div class="app-body" data-view="innboks" hidden>
+        <div class="app-head">
+          <div>
+            <h2>Innboks og bilagsmottak</h2>
+            <p>PDF- og EHF-fakturaer tolkes automatisk med forslag til leverandør, konto og MVA-kode.</p>
+          </div>
+          <span class="app-btn pri">+ Last opp bilag</span>
+        </div>
+        <div class="split-2">
+          <div class="split-left">
+            <div style="padding:10px 14px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;font-size:12px;font-weight:600;background:#f9fbf9">
+              <span>Til godkjenning (2)</span>
+              <span class="muted">Alle selskaper</span>
+            </div>
+            <div class="inb-row sel">
+              <div style="display:flex;justify-content:space-between;font-weight:600">
+                <span>Fjord Energi AS</span>
+                <span class="num">14 850,00 kr</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:12px" class="muted">
+                <span>Eksempel Eiendom AS · Faktura #88412</span>
+                <span class="pill ok">Forslag: 6340 Lys/varme (MVA 1)</span>
+              </div>
+            </div>
+            <div class="inb-row">
+              <div style="display:flex;justify-content:space-between;font-weight:600">
+                <span>Nordisk Kontorrekvisita AS</span>
+                <span class="num">3 490,00 kr</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:12px" class="muted">
+                <span>Eksempel Drift AS · Faktura #20491</span>
+                <span class="pill ok">Forslag: 6800 Kontorrekvisita (MVA 1)</span>
+              </div>
+            </div>
+          </div>
+          <div style="padding:16px 18px;display:grid;gap:12px">
+            <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:10px">
+              <div>
+                <strong>Fjord Energi AS · Faktura #88412</strong>
+                <p class="muted">Mottatt til Eksempel Eiendom AS · Forfall 20.11.2026</p>
+              </div>
+              <span class="pill ok">SHA-256 verifisert PDF</span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;background:#f4f7f5;padding:10px;border-radius:6px;font-size:12px">
+              <div><span class="muted">Beløp inkl. MVA</span><br><strong class="num">14 850,00 kr</strong></div>
+              <div><span class="muted">Inngående MVA (25 %)</span><br><strong class="num">2 970,00 kr</strong></div>
+              <div><span class="muted">Foreslått kostnadskonto</span><br><strong>6340 Lys og varme</strong></div>
+            </div>
+            <div style="display:flex;justify-content:flex-end;gap:8px;padding-top:4px">
+              <span class="app-btn">Endre kontering</span>
+              <span class="app-btn pri">Godkjenn og bokfør bilag</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FANE 3: SALG (Statuskort + fakturaskuff med hendelseslogg) -->
+      <div class="app-body" data-view="salg" hidden>
+        <div class="app-head">
+          <div>
+            <h2>Salg og utgående fakturaer</h2>
+            <p>Fakturer eksterne kunder eller opprett konsernfaktura som bokføres speilet i begge selskaper.</p>
+          </div>
+          <span class="app-btn pri">+ Ny salgsfaktura</span>
+        </div>
+        <div class="inv-tabs">
+          <div class="inv-t sel"><span class="muted">Alle fakturaer (18)</span><div class="big" style="font-size:17px;margin:2px 0 0">642 500,00 kr</div></div>
+          <div class="inv-t"><span class="muted">Ubetalt (2)</span><div class="big" style="font-size:17px;margin:2px 0 0">85 000,00 kr</div></div>
+          <div class="inv-t"><span class="muted">Forfalt (0)</span><div class="big" style="font-size:17px;margin:2px 0 0;color:#186a49">0,00 kr</div></div>
+          <div class="inv-t"><span class="muted">Betalt (16)</span><div class="big" style="font-size:17px;margin:2px 0 0">557 500,00 kr</div></div>
+        </div>
+        <div class="split-2">
+          <div class="split-left" style="padding:10px 14px">
+            <table class="app-tbl">
+              <thead>
+                <tr><th>Nr.</th><th>Selskap / Kunde</th><th class="num">Beløp</th><th>Status</th></tr>
+              </thead>
+              <tbody>
+                <tr style="background:#f4f7f5">
+                  <td><strong>#2026-18</strong></td>
+                  <td><strong>Leietaker Kontorbygg AS</strong><br><span class="muted">Fra Eksempel Eiendom AS</span></td>
+                  <td class="num"><strong>62 500,00 kr</strong></td>
+                  <td><span class="pill info">Sendt</span></td>
+                </tr>
+                <tr>
+                  <td><strong>#2026-17</strong></td>
+                  <td><strong>Eksempel Drift AS</strong><br><span class="muted">Konsernfaktura fra Eksempel Holding AS</span></td>
+                  <td class="num"><strong>22 500,00 kr</strong></td>
+                  <td><span class="pill ok">Speilet i konsern</span></td>
+                </tr>
+                <tr>
+                  <td><strong>#2026-16</strong></td>
+                  <td><strong>Byggservice Sør AS</strong><br><span class="muted">Fra Eksempel Utleie AS</span></td>
+                  <td class="num"><strong>48 000,00 kr</strong></td>
+                  <td><span class="pill ok">Betalt</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="padding:14px 16px;display:grid;gap:8px;font-size:12.5px">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <strong>Faktura #2026-18 · Leietaker Kontorbygg AS</strong>
+              <span class="pill info">Forfall 15.11.2026</span>
+            </div>
+            <p class="muted">Husleie 4. kvartal · Konto 3600 Leieinntekter · Bilag EIENDOM-2026-0084</p>
+            <div style="border-top:1px solid var(--line);padding-top:8px;display:grid;gap:4px;font-size:12px">
+              <div><strong style="color:#186a49">●</strong> 01.11.2026 — Faktura opprettet og låst i hovedbok (debet 1500 / kredit 3600, 2700)</div>
+              <div><strong style="color:#186a49">●</strong> 01.11.2026 — PDF generert med KID 0020261804</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FANE 4: BANK (Synlig avstemmingslikning + banklinjer) -->
+      <div class="app-body" data-view="bank" hidden>
+        <div class="app-head">
+          <div>
+            <h2>Bank og avstemming</h2>
+            <p>Kontoutskrift mot hovedbokskonto 1920 per måned og selskap.</p>
+          </div>
+          <span class="app-btn">Importer kontoutskrift (CSV / CAMT.053)</span>
+        </div>
+        <div class="rec-eq" aria-label="Avstemmingslikning bank mot hovedbok">
+          <div class="rec-box"><div class="lbl">Saldo kontoutskrift (bank)</div><div class="val">1 962 471,00 kr</div></div>
+          <strong style="font-size:16px;color:#6e7874">−</strong>
+          <div class="rec-box"><div class="lbl">Bokført i hovedboken (1920/1950)</div><div class="val">1 962 471,00 kr</div></div>
+          <strong style="font-size:16px;color:#6e7874">=</strong>
+          <div class="rec-box ok-box"><div class="lbl">Differanse</div><div class="val">0,00 kr (Avstemt)</div></div>
+        </div>
+        <section class="app-card" style="margin-top:0">
+          <table class="app-tbl">
+            <thead>
+              <tr><th>#</th><th>Dato</th><th>Selskap</th><th>Tekst fra bank</th><th class="num">Beløp</th><th>Avstemt mot bilag</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>04.11.2026</td>
+                <td>Eksempel Eiendom AS</td>
+                <td>Innbetaling KID 0020261602 Byggservice Sør AS</td>
+                <td class="num" style="color:#186a49"><strong>+48 000,00 kr</strong></td>
+                <td><span class="pill ok">EIENDOM-2026-0081</span></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>02.11.2026</td>
+                <td>Eksempel Holding AS</td>
+                <td>Konsernbidrag / oppgjør mellomværende Eksempel Drift AS</td>
+                <td class="num" style="color:#186a49"><strong>+22 500,00 kr</strong></td>
+                <td><span class="pill ok">HOLD-2026-0042</span></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>31.10.2026</td>
+                <td>Eksempel Drift AS</td>
+                <td>Utbetaling lønn oktober</td>
+                <td class="num">−59 200,00 kr</td>
+                <td><span class="pill ok">DRIFT-2026-0119</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
     </div>
   </figure>
-  <p class="note">Illustrasjon med oppdiktede selskaper og tall.</p>
+  <p class="note">Illustrasjon med oppdiktede selskaper og tall. Klikk gjerne på Oversikt, Innboks, Salg og Bank i menyen til venstre.</p>
 
   <ul class="points">
     <li><strong>Alle selskapene dine på ett sted</strong>Fra holding til datterselskap.</li>
@@ -190,6 +584,13 @@ form .btn:disabled { opacity: .6; cursor: default; }
 </dialog>
 <script>
 (() => {
+  const tabs = document.querySelectorAll(".app-nav-btn[data-pane]");
+  const views = document.querySelectorAll(".app-body[data-view]");
+  tabs.forEach(btn => btn.addEventListener("click", () => {
+    const target = btn.getAttribute("data-pane");
+    tabs.forEach(b => b.setAttribute("aria-selected", String(b === btn)));
+    views.forEach(v => { v.hidden = v.getAttribute("data-view") !== target; });
+  }));
   const ENDPOINT = "https://penso-skjema.hello-ac5.workers.dev";
   const d = document.getElementById("kontakt"), f = document.getElementById("skjema"), m = document.getElementById("msg");
   document.querySelectorAll(".js-open").forEach(b => b.addEventListener("click", () => { d.showModal(); f.elements.email.focus(); }));
