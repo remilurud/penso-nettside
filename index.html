@@ -10,7 +10,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://penso.no/">
 <meta property="og:image" content="https://penso.no/penso-ikon-512.png">
-<meta name="theme-color" content="#0b3a31">
+<meta name="theme-color" content="#ffffff">
 <link rel="canonical" href="https://penso.no/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -24,32 +24,38 @@ a { color: var(--accent); }
 :focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 4px; }
 .wrap { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-/* Topp og hero på grønn flate */
-.top { background: linear-gradient(180deg, #0a3029 0%, #0f4c3f 42%, #2f7f66 78%, #6fae93 100%); color: #fff; padding-bottom: 280px; }
-header .wrap { display: flex; align-items: center; justify-content: space-between; height: 76px; border-bottom: 1px solid rgba(255,255,255,.12); }
-.brand { display: flex; align-items: center; gap: 10px; font-size: 22px; font-weight: 700; letter-spacing: -.02em; color: #fff; text-decoration: none; }
-.brand img { width: 30px; height: 30px; border-radius: 8px; box-shadow: 0 0 0 1px rgba(255,255,255,.35); }
-.btn { display: inline-block; border: 0; cursor: pointer; font-family: inherit; background: var(--accent); color: #fff; text-decoration: none; font-weight: 600; font-size: 17px;
-  border-radius: 999px; padding: 15px 32px; transition: background-color .18s, color .18s; }
+/* Topp og hero på lys flate */
+header { border-bottom: 1px solid var(--line); background: #fff; }
+header .wrap { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px 24px; min-height: 72px; padding-block: 12px; }
+.brand { display: flex; align-items: center; gap: 10px; font-size: 21px; font-weight: 700; letter-spacing: -.02em; color: var(--ink); text-decoration: none; }
+.brand img { width: 32px; height: 32px; }
+.nav { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 28px; font-size: 15px; }
+.nav a { color: var(--ink); text-decoration: none; padding: 10px 0; }
+.nav a:hover { color: var(--accent); }
+.btn { display: inline-block; border: 0; cursor: pointer; font-family: inherit; background: var(--accent); color: #fff; text-decoration: none; font-weight: 600; font-size: 16px;
+  border-radius: 12px; padding: 15px 26px; transition: background-color .18s, color .18s, box-shadow .18s; }
 .btn:hover { background: var(--accent-hover); }
 .btn:active { transform: translateY(1px); }
-.btn-ghost { background: transparent; color: #fff; box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.8); }
-.btn-ghost:hover { background: #fff; color: var(--accent); }
-.btn-light { background: #fff; color: var(--accent); font-size: 15px; padding: 10px 20px; }
-.btn-light:hover { background: #e6f0eb; }
+.btn-ghost { background: #fff; color: var(--ink); box-shadow: inset 0 0 0 1px #d4dad7; }
+.btn-ghost:hover { background: #f4f7f5; color: var(--ink); }
+.btn-dark { background: var(--ink); font-size: 15px; padding: 11px 18px; border-radius: 10px; }
+.btn-dark:hover { background: #2c3134; }
+.btn-white { background: #fff; color: var(--ink); }
+.btn-white:hover { background: var(--hero); }
 
-.hero { text-align: center; padding-block: 96px 72px; }
-h1 { font-size: clamp(44px, 8vw, 104px); line-height: 1.02; letter-spacing: -.035em; font-weight: 500; margin: 0 auto 26px; max-width: 11em; text-wrap: balance; }
-h1 em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -.01em; }
-.lead { font-size: clamp(18px, 2vw, 22px); color: rgba(255,255,255,.88); margin: 0 auto 44px; max-width: 30em; }
-.status { display: block; margin: 18px 0 0; font-size: 14px; color: rgba(255,255,255,.75); }
+.hero { text-align: center; padding-block: 88px 64px; display: flex; flex-direction: column; align-items: center; }
+.eyebrow { margin: 0 0 24px; font-size: 14px; font-weight: 600; color: #0b4d3f; background: var(--hero); padding: 6px 14px; border-radius: 999px; }
+h1 { font-size: clamp(42px, 7vw, 84px); line-height: 1.04; letter-spacing: -.035em; font-weight: 500; margin: 0 auto 24px; max-width: 11em; text-wrap: balance; }
+h1 em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -.01em; color: var(--accent); }
+.lead { font-size: clamp(18px, 2vw, 21px); color: var(--ink-2); margin: 0 auto 36px; max-width: 30em; }
+.actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
 
 /* Illustrasjon av appen (nyeste Penso v2 med månedslinje, 3-kolonners hovedbok, 2-kolonners innboks, bankformel og salgs-skuff) */
-.app { position: relative; margin: -280px auto 0; max-width: 1160px; border-radius: 16px; overflow: hidden; background: #f4f7f5;
-  box-shadow: 0 40px 90px rgba(10, 48, 41, .28), 0 0 0 1px rgba(10, 48, 41, .08); display: grid; grid-template-columns: 200px 1fr; text-align: left; font-size: 13.5px; line-height: 1.45; }
+.app { position: relative; margin: 0 auto; max-width: 1160px; border-radius: 18px; overflow: hidden; background: #f4f7f5;
+  box-shadow: 0 1px 2px rgba(10, 48, 41, .04), 0 24px 60px rgba(10, 48, 41, .12), 0 0 0 1px rgba(10, 48, 41, .08); display: grid; grid-template-columns: 200px 1fr; text-align: left; font-size: 13.5px; line-height: 1.45; }
 .app-side { background: #1d2321; color: #cfd6d3; padding: 16px 10px; display: flex; flex-direction: column; gap: 2px; border-right: 1px solid #141917; }
 .app-brand { display: flex; align-items: center; gap: 9px; font-weight: 700; font-size: 17px; color: #fff; padding: 2px 10px 16px; letter-spacing: -.02em; }
-.app-brand img { width: 24px; height: 24px; border-radius: 6px; box-shadow: 0 0 0 1px rgba(255,255,255,.28); }
+.app-brand img { width: 24px; height: 24px; }
 .app-grp { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .07em; color: #7d8984; padding: 10px 10px 3px; }
 .app-nav-btn { position: relative; width: 100%; border: 0; background: transparent; color: #b8c2be; font: 500 13px/1.3 var(--font); padding: 7px 10px; border-radius: 6px;
   display: flex; justify-content: space-between; align-items: center; cursor: pointer; text-align: left; }
@@ -84,7 +90,7 @@ h1 em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-
 .sums strong { display: block; font-size: 14.5px; color: var(--ink); font-weight: 650; font-variant-numeric: tabular-nums; margin-top: 2px; }
 .acct-list { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 7px; }
 .acct-item { display: grid; gap: 3px; font-size: 12px; font-variant-numeric: tabular-nums; }
-.acct-row { display: flex; justify-content: space-between; gap: 6px; }
+.acct-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 6px; min-width: 0; }
 .acct-name { font-weight: 500; color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .acct-meta { color: var(--ink-2); white-space: nowrap; }
 .acct-bar { display: block; width: 100%; height: 4px; border-radius: 2px; overflow: hidden; }
@@ -117,12 +123,30 @@ h1 em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-
 .note { text-align: center; font-size: 13px; color: var(--ink-2); margin: 14px 0 0; }
 [hidden] { display: none !important; }
 
-/* Punkter */
-.points { list-style: none; margin: 72px auto 96px; padding: 0 24px; max-width: 860px; display: grid; grid-template-columns: 1fr 1fr; gap: 26px 48px; }
-.points li { position: relative; padding-left: 38px; color: var(--ink-2); font-size: 16px; line-height: 1.5; }
-.points strong { display: block; color: var(--ink); font-size: 17px; }
-.points li::before { content: ""; position: absolute; left: 0; top: 1px; width: 24px; height: 24px; border-radius: 50%; background: var(--accent)
-  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 12.5l3.2 3.2L17 9' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 24px no-repeat; }
+/* Seksjoner */
+.app-wrap { padding-inline: 24px; }
+.section { padding-block: 96px; }
+.section-alt { background: #f6f8f7; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-top: 96px; }
+.section h2 { margin: 0 0 14px; font-size: clamp(32px, 4vw, 44px); line-height: 1.1; letter-spacing: -.025em; font-weight: 600; text-wrap: balance; }
+.section-lead { margin: 0 0 48px; font-size: 18px; color: var(--ink-2); max-width: 36em; }
+.features { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.feature { background: #fff; border: 1px solid #e1e6e3; border-radius: 16px; padding: 28px 26px; display: flex; flex-direction: column; gap: 12px; }
+.feature svg { width: 28px; height: 28px; color: var(--accent); }
+.feature h3 { margin: 0; font-size: 18px; font-weight: 600; letter-spacing: -.01em; line-height: 1.3; }
+.feature p { margin: 0; font-size: 16px; line-height: 1.55; color: var(--ink-2); }
+.steps { list-style: none; margin: 48px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+.steps li { border-top: 2px solid var(--ink); padding-top: 20px; display: flex; flex-direction: column; gap: 10px; }
+.step-no { font-size: 15px; font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; }
+.steps h3 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.01em; }
+.steps p { margin: 0; font-size: 16px; line-height: 1.55; color: var(--ink-2); }
+.cta { background: #16181b; color: #fff; text-align: center; }
+.cta .wrap { padding-block: 96px; display: flex; flex-direction: column; align-items: center; gap: 24px; }
+.cta h2 { margin: 0; font-size: clamp(32px, 4.5vw, 52px); line-height: 1.1; letter-spacing: -.03em; font-weight: 600; max-width: 14em; text-wrap: balance; }
+.cta h2 em { font-family: var(--serif); font-style: italic; font-weight: 400; }
+.cta p { margin: 0; font-size: 15px; color: rgba(255,255,255,.72); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; padding-block: 32px; font-size: 14px; color: var(--ink-2); }
+footer .brand { font-size: 17px; }
+footer .brand img { width: 26px; height: 26px; }
 dialog { border: 0; border-radius: 20px; padding: 32px; width: min(480px, calc(100vw - 32px)); color: var(--ink); box-shadow: 0 24px 64px rgba(14, 40, 32, .18); }
 dialog::backdrop { background: rgba(22, 24, 27, .4); }
 dialog h2 { margin: 0 0 20px; font-size: 26px; letter-spacing: -.02em; }
@@ -152,39 +176,52 @@ form .btn:disabled { opacity: .6; cursor: default; }
   .split-2 { grid-template-columns: 1fr; }
   .split-left { border-right: 0; border-bottom: 1px solid var(--line); }
   .inv-tabs { grid-template-columns: 1fr 1fr; }
+  .features { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .steps { grid-template-columns: 1fr; gap: 28px; }
 }
 @media (max-width: 640px) {
   .wrap { padding-inline: 16px; }
-  .top { padding-bottom: 200px; }
-  .hero { padding-block: 56px 48px; }
-  .app { margin: -200px 12px 0; border-radius: 14px; }
+  .app-wrap { padding-inline: 12px; }
+  .hero { padding-block: 56px 44px; }
+  .app { border-radius: 14px; }
   .app-ctx { padding: 8px 12px; }
   .app-body { padding: 14px 12px 18px; }
   .app-card { overflow-x: auto; }
-  .points { grid-template-columns: 1fr; margin: 48px auto 64px; padding: 0 20px; max-width: 420px; }
+  .nav { display: none; }
+  .section { padding-block: 64px; }
+  .section-alt { margin-top: 64px; }
+  .features { grid-template-columns: 1fr; }
+  .cta .wrap { padding-block: 72px; }
 }
 </style>
 </head>
 <body>
-<div class="top">
-  <header>
-    <div class="wrap">
-      <a class="brand" href="/" aria-label="Penso, til forsiden"><img src="/favicon.svg" alt="" width="30" height="30">Penso</a>
-      <button class="btn btn-light js-open" type="button" aria-haspopup="dialog">Ta kontakt</button>
-    </div>
-  </header>
-  <div class="wrap hero">
-    <h1><em>Enkelt</em> regnskap for flere selskaper</h1>
-    <p class="lead">Holding og datterselskaper i én oversikt, med bokføring som stemmer på tvers av selskapene.</p>
-    <button class="btn btn-ghost js-open" type="button" aria-haspopup="dialog">Ta kontakt</button>
-    <span class="status">Under utvikling</span>
+<header>
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Penso, til forsiden"><img src="/favicon.svg" alt="" width="32" height="32">Penso</a>
+    <nav class="nav" aria-label="Hovedmeny">
+      <a href="#funksjoner">Funksjoner</a>
+      <a href="#slik-virker-det">Slik virker det</a>
+    </nav>
+    <button class="btn btn-dark js-open" type="button" aria-haspopup="dialog">Ta kontakt</button>
   </div>
-</div>
+</header>
 
 <main>
+  <div class="wrap hero">
+    <p class="eyebrow">Under utvikling</p>
+    <h1><em>Enkelt</em> regnskap for flere selskaper</h1>
+    <p class="lead">Holding og datterselskaper i én oversikt, med bokføring som stemmer på tvers av selskapene.</p>
+    <div class="actions">
+      <button class="btn js-open" type="button" aria-haspopup="dialog">Ta kontakt</button>
+      <a class="btn btn-ghost" href="#slik-virker-det">Se hvordan det virker</a>
+    </div>
+  </div>
+
+  <div class="app-wrap">
   <figure class="app" aria-label="Interaktiv illustrasjon av Penso med oppdiktede selskaper og tall">
     <aside class="app-side" role="tablist" aria-label="Visninger i illustrasjonen">
-      <div class="app-brand"><img src="/favicon.svg" alt="">Penso</div>
+      <div class="app-brand"><img src="/logo-lys.svg" alt="">Penso</div>
       <div class="app-grp">Arbeidsflate</div>
       <button type="button" class="app-nav-btn" role="tab" aria-selected="true" data-pane="oversikt"><span>Oversikt</span></button>
       <button type="button" class="app-nav-btn" role="tab" aria-selected="false" data-pane="innboks"><span>Innboks</span><span class="app-badge">2</span></button>
@@ -557,15 +594,76 @@ form .btn:disabled { opacity: .6; cursor: default; }
       </div>
     </div>
   </figure>
+  </div>
   <p class="note">Illustrasjon med oppdiktede selskaper og tall. Klikk gjerne på Oversikt, Innboks, Salg og Bank i menyen til venstre.</p>
 
-  <ul class="points">
-    <li><strong>Alle selskapene dine på ett sted</strong>Fra holding til datterselskap.</li>
-    <li><strong>Bilag føres automatisk</strong>Penso foreslår konto og MVA. Du godkjenner.</li>
-    <li><strong>Mellomværender som alltid stemmer</strong>Selskapene avstemmes mot hverandre.</li>
-    <li><strong>Ingenting forsvinner</strong>Bokførte bilag rettes bare med synlige korrigeringer.</li>
-  </ul>
+  <section class="section section-alt" id="funksjoner" aria-labelledby="funksjoner-h">
+    <div class="wrap">
+      <h2 id="funksjoner-h">Hele konsernet, ett regnskap</h2>
+      <p class="section-lead">Penso tar seg av rutinearbeidet. Du godkjenner.</p>
+      <ul class="features">
+        <li class="feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+          <h3>Alle selskapene dine på ett sted</h3>
+          <p>Fra holding til datterselskap.</p>
+        </li>
+        <li class="feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><polyline points="14 3 14 8 19 8"/><polyline points="9 14 11 16 15 12"/></svg>
+          <h3>Bilag føres automatisk</h3>
+          <p>Penso foreslår konto og MVA. Du godkjenner.</p>
+        </li>
+        <li class="feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4L3 8l4 4"/><path d="M3 8h14"/><path d="M17 20l4-4-4-4"/><path d="M21 16H7"/></svg>
+          <h3>Mellomværender som alltid stemmer</h3>
+          <p>Selskapene avstemmes mot hverandre.</p>
+        </li>
+        <li class="feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><polyline points="9 12 11 14 15 10"/></svg>
+          <h3>Ingenting forsvinner</h3>
+          <p>Bokførte bilag rettes bare med synlige korrigeringer.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="slik-virker-det" aria-labelledby="slik-h">
+    <div class="wrap">
+      <h2 id="slik-h">Slik virker det</h2>
+      <ol class="steps">
+        <li>
+          <span class="step-no">01</span>
+          <h3>Samle selskapene</h3>
+          <p>Holding og datterselskaper legges inn i én felles oversikt.</p>
+        </li>
+        <li>
+          <span class="step-no">02</span>
+          <h3>Bilagene kommer inn</h3>
+          <p>PDF- og EHF-fakturaer tolkes, med forslag til leverandør, konto og MVA-kode. Du godkjenner.</p>
+        </li>
+        <li>
+          <span class="step-no">03</span>
+          <h3>Alt stemmer på tvers</h3>
+          <p>Banken avstemmes mot hovedboken, og mellomværender avstemmes mellom selskapene.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="cta" aria-labelledby="cta-h">
+    <div class="wrap">
+      <h2 id="cta-h"><em>Enkelt</em> regnskap for hele konsernet.</h2>
+      <button class="btn btn-white js-open" type="button" aria-haspopup="dialog">Ta kontakt</button>
+      <p>Penso er under utvikling.</p>
+    </div>
+  </section>
 </main>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Penso, til forsiden"><img src="/favicon.svg" alt="" width="26" height="26">Penso</a>
+    <span>© 2026 Penso</span>
+  </div>
+</footer>
 
 <dialog id="kontakt" aria-labelledby="k-h">
   <button class="close" type="button" id="close" aria-label="Lukk">×</button>
